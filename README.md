@@ -169,6 +169,67 @@ O script fará a seguinte sequência:
 Ler os dados no banco MySQL -> Consolidar os dados -> Salvar os dados consolidados numa nova tabela. Utilize as bibliotecas que você se sentir mais confortável.
 
 
+### 1. SOLUÇÃO:
+
+- Verificando a tabela raw_data
+
+Fiz a conexão com o banco de dados MySQL e realizei a extração da tabela raw_data para meu banco de dados MySQL, assim eu consigo ter uma espectiva melhor da tabela que vou trabalhar.
+
+![image](https://github.com/GleisonR/Desafio/assets/116228613/c5286d1e-d945-4c75-afa3-13ef0ae9f4da)
+
+- Conexão com o banco de dados de origem
+
+Agora, realizando as ações propostas pelo desafio, foi estabelecido a conexão com o banco de dados utilizando a biblioteca SQLAlchemy, pois o banco de dados de origem é SQL. A função 'create_engine' foi importada para que posteriormente eu possa acessar esse banco apenas pela variável 'source_engine'. Além disso, foi salvo em uma variável a consulta necessária para retornar todos os dados.
+
+- Salvando os dados
+
+O objetivo era trabalhar esses dados no pandas, então foi armazenado as variáveis referentes ao banco de dados e à consulta em um data frame. Em seguida, foi fechado a conexão, pois os dados necessários foram salvos data frame.
+
+- Converter a coluna datahora_acesso para o formato adequado
+
+Nessa coluna eu observei que existe 2 tipos de data, um que me fala a dia, mes, ano, hora, minutos e segundo e outro que me fala somente dia, mes e ano. Então importei a biblioteca "datetime" para fazer a formatação dessa coluna no meu dataframe.
+
+- Criar a coluna 'mes'
+
+É criada uma nova coluna chamada 'mes' no DataFrame data que contém o mês extraído da coluna 'datahora_acesso'. Os valores são convertidos para o formato de período mensal, usando dt.to_period('M'), e então convertidos de volta para o formato de data e hora usando dt.to_timestamp(). Por fim, os valores são convertidos em strings de dois dígitos usando dt.strftime('%m').
+
+- Consolidação dos dados
+
+Os dados são consolidados e salvos na variavel 'consolidacao', os dados são agrupandos pela coluna mês e realizando operações de agregação usando o groupby.
+
+- Explicação da logica
+
+**rake=('rake', lambda x: round(x.sum(), 2)):** Essa operação calcula a soma dos valores da coluna 'rake' para cada grupo e arredonda o resultado para 2 casas decimais. Assim, o resultado é armazenado na coluna 'rake' 
+
+**jogadores=('clientes_id', 'nunique'):** Essa operação calcula o número de valores únicos na coluna 'clientes_id' para cada grupo. Assim, o resultado é armazenado na coluna 'jogadores'.
+
+**rake_cash_game=('rake', lambda x: round(x[data['modalidade'] == 'Cash Game'].sum(), 2)):** Essa operação calcula a soma dos valores da coluna 'rake' para as linhas onde a coluna 'modalidade' é igual a 'Cash Game'. Assim, o resultado é arredondado para 2 casas decimais e armazenado na coluna 'rake_cash_game'.
+
+**rake_torneio=('rake', lambda x: round(x[data['modalidade'] == 'Torneio'].sum(), 2)):** Essa operação calcula a soma dos valores da coluna 'rake' para as linhas onde a coluna 'modalidade' é igual a 'Torneio'. O resultado é arredondado para 2 casas decimais e armazenado na coluna 'rake_torneio'.
+
+**jogadores_cash_game=('clientes_id', lambda x: x[data['modalidade'] == 'Cash Game'].nunique()):** Essa operação calcula o número de valores únicos na coluna 'clientes_id' para as linhas onde a coluna 'modalidade' é igual a 'Cash Game'. Assim, o resultado é armazenado na coluna 'jogadores_cash_game'.
+
+**jogadores_torneio=('clientes_id', lambda x: x[data['modalidade'] == 'Torneio'].nunique()):** Essa operação calcula o número de valores únicos na coluna 'clientes_id' para as linhas onde a coluna 'modalidade' é igual a 'Torneio'. Assim, resultado é armazenado na coluna 'jogadores_torneio'.
+
+- Nome da tabela para salvar os dados consolidados
+
+A variável table_name armazena o nome da tabela que será salva no banco de dados local.
+
+- Salvamento dos dados consolidados
+
+Os dados consolidados são salvos no banco de dados local usando o método to_sql, utilizando as variáveis table_name e local_engine. O parâmetro if_exists='replace' indica que a tabela deve ser substituída se já existir.
+
+- Fechamento da conexão com o banco de dados local: 
+
+A conexão com o banco de dados local é encerrada usando o método dispose() do SQLAlchemy.
+
+
+
+
+
+
+
+
 
 
 
