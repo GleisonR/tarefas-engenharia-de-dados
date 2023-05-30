@@ -43,28 +43,28 @@ Para essa atividade, considere cada geração tendo o seguinte critério:
 
 ### 1. SOLUÇÃO:
 
-Para esse desafio que optei por utilizar o databricks, onde é minha ferramenta favorita e eu consigo utilizar python, pyspark e SQL no mesmo código. Mas nesse desafio o foco da consulta era SQL.
+Para esse desafio foi usado o databricks, onde é uma ferramenta que possibilita utilizar python, pyspark e SQL no mesmo código. Mas nesse desafio o foco da consulta era SQL.
 
 - IMPORT
 
-Fiz a import dos 2 arquivos CSV para o databricks.
+Foi realizado o import dos 2 arquivos CSV para o databricks.
 
 ![image](https://github.com/GleisonR/Desafio/assets/116228613/2534ec86-879c-4528-bf3e-52b540f507f3)
 
 
-Depois de realizar a importação, foi gerado um link para o arquivo de acesso, permitindo que eu o chame para o meu dataframe. Em Python, chamei o arquivo e utilizei a codificação UTF-8, que é a mais comum no Brasil. Na primeira linha, defini que se tratava de um cabeçalho com o código "header", e utilizei a vírgula como delimitador para separar as colunas 
+Depois de realizar a importação, foi gerado um link para o arquivo de acesso, permitindo que eu o chame para o meu dataframe. Em Python, foi utilizado a codificação UTF-8, que é a mais comum no Brasil. A primeira linha do csv foi definido que se tratava de um cabeçalho com o código "header", e foi utilizado a vírgula como delimitador para separar as colunas 
 
 ![image](https://github.com/GleisonR/Desafio/assets/116228613/106fd14d-2a27-4458-90e3-c3aa8cfb4c97)
 
 ![image](https://github.com/GleisonR/Desafio/assets/116228613/a8174dba-0314-46ac-82c6-b25bc0bbd0e0)
 
-Ainda em Python, criei uma TempView para utilizar SQL na tabela.
+Ainda em Python, foi criado uma TempView para utilizar SQL na tabela.
 
 ![image](https://github.com/GleisonR/Desafio/assets/116228613/ca2e0ad3-c539-4024-a335-bc836d58cb4a)
 
 - VERIFICANDO INFORMAÇÕES
 
-Agora, já conseguindo trabalhar com SQL, verifiquei as informações das tabelas, assim consigo visualizar os dados com os quais estou trabalhando.
+Agora, já conseguindo trabalhar com SQL, foi verificado as informações das tabelas, assim possibilitando visualizar os dados dentro do arquivo.
 
 ![image](https://github.com/GleisonR/Desafio/assets/116228613/983b8523-8d59-4110-9502-b86d8ae1598f)
 ![image](https://github.com/GleisonR/Desafio/assets/116228613/0dd02b09-a840-4712-ae90-b9db8bb466ec)
@@ -76,9 +76,7 @@ Agora, já conseguindo trabalhar com SQL, verifiquei as informações das tabela
 
 - Nessa primeira etapa, é preciso do valor máximo gerado em rake para cada geração.
 
-Nessa etapa, eu preciso da coluna "rake" na tabela resultado e da coluna "data_nascimento" na tabela clientes. O valor de "rake" era uma string, então utilizei
-a função **'SUM(CAST(rake AS INT))'** para somar os valores da coluna "rake" após convertê-los para o tipo de dados inteiro (INT). Para a data de nascimento, 
-utilizei o "between" para selecionar os dados que estão dentro de um intervalo específico. E, para finalizar, utilizei o "inner join" para relacionar o "id" 
+Nessa etapa, é preciso da coluna "rake" na tabela resultado e da coluna "data_nascimento" na tabela clientes. O valor de "rake" era uma string, então foi utilizado a função **'SUM(CAST(rake AS INT))'** para somar os valores da coluna "rake" após convertê-los para o tipo de dados inteiro (INT). Para a data de nascimento, foi utilizado o "between" para selecionar os dados que estão dentro de um intervalo específico. E, para finalizar, foi acrescentado o "inner join" para relacionar o "id" 
 com "clientes_id" e assim unir as duas tabelas.
 
 - Geração Baby Boomers
@@ -106,10 +104,7 @@ Os dados começam em 1942 e terminam em 2008. Com isso, não há dados sobre a g
 
 - Nessa segunda etapa, é preciso saber o valor máximo gerado em cada mês.
 
-Verifiquei que só preciso usar a tabela resultado para essa consulta. Comecei utilizando a função **EXTRACT(MONTH FROM resultado)**, que serve para extrair o mês 
-de uma data especificada. Em relação ao "rake", fiz a mesma coisa que na consulta anterior, utilizando a função **SUM(CAST(rake AS INT))** para somar os valores da 
-coluna "rake" após convertê-los para o tipo de dados inteiro (INT). Finalizei com "GROUP BY" para agrupar os meses iguais e "ORDER BY" para ordenar em ordem 
-crescente.
+Foi verificado que só  é preciso usar a tabela resultado para essa consulta. Utilizando a função **EXTRACT(MONTH FROM resultado)**, que serve para extrair o mês de uma data especificada. Em relação ao "rake", utilizando a função **SUM(CAST(rake AS INT))** para somar os valores da coluna "rake" após convertê-los para o tipo de dados inteiro (INT). Foi finalizado com "GROUP BY" para agrupar os meses iguais e "ORDER BY" para ordenar em ordem crescente.
 
 - ![image](https://github.com/GleisonR/Desafio/assets/116228613/44b15011-1d69-4ea9-9f18-c4902faa1910)
 
@@ -118,7 +113,7 @@ crescente.
 
 - Nessa terceira etapa é preciso veriricar qual sexo tem a quantidade maior quantidade de ganhadores.
 
-Nessa etapa, percebi que iria utilizar novamente as duas tabelas e utilizei o mesmo INNER JOIN que empreguei na primeira etapa. Fiz a soma dos valores da coluna "winning" seguindo a mesma lógica da coluna "rake" das etapas anteriores. Utilizei a função **'WHERE c.sexo = 'm' AND r.winning > 0'** para filtrar os resultados de uma consulta com base em duas condições.
+Nessa etapa, foi verificado que iria utilizar novamente as duas tabelas, assim, o mesmo INNER JOIN que foi empregado na primeira etapa. Foi realizado a soma dos valores da coluna "winning" seguindo a mesma lógica da coluna "rake" das etapas anteriores. Utilizando a função **'WHERE c.sexo = 'm' AND r.winning > 0'** para filtrar os resultados de uma consulta com base em duas condições.
 
 A primeira condição, c.sexo = 'm', indica que apenas os registros em que o valor da coluna "sexo" seja igual a 'm' (que geralmente representa o sexo masculino) serão incluídos no resultado da consulta.
 
@@ -173,7 +168,7 @@ Ler os dados no banco MySQL -> Consolidar os dados -> Salvar os dados consolidad
 
 - Verificando a tabela raw_data
 
-Fiz a conexão com o banco de dados MySQL e realizei a extração da tabela raw_data para meu banco de dados MySQL, assim eu consigo ter uma espectiva melhor da tabela que vou trabalhar.
+Foi realizado a conexão com o banco de dados MySQL e também a extração da tabela raw_data para o banco de dados MySQL, assim possibilitand ter uma espectiva melhor da tabela.
 
 ![image](https://github.com/GleisonR/Desafio/assets/116228613/c5286d1e-d945-4c75-afa3-13ef0ae9f4da)
 
