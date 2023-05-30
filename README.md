@@ -1,6 +1,6 @@
 # DESAFIOS DE UM ENGENHEIRO DE DADOS JUNIOR
 
-### 1. 1° DESAFIO: USANDO SQL PARA RESPONDER PERGUNTAS
+### 1° DESAFIO: USANDO SQL PARA RESPONDER PERGUNTAS
 
 
 Você encontrará as duas tabelas necessárias nessa pasta. Segue uma breve descrição de cada coluna: 
@@ -134,6 +134,9 @@ Na segunda condição, r.winning > 0, indica que apenas os registros em que o va
 
 Analisando o valor retornado pelas duas consultas, verifica-se que o número de consultas do sexo masculino é maior, confirmando assim que o sexo masculino tem a maior quantidade de ganhadores.
 
+<hr>
+
+### 2° DESAFIO: MANIPULAÇÃO DE DADOS EM PYTHON
 
 
 
