@@ -223,6 +223,11 @@ Os dados consolidados são salvos no banco de dados local usando o método to_sq
 
 A conexão com o banco de dados local é encerrada usando o método dispose() do SQLAlchemy.
 
+- Dados salvos no banco de dados local:
+
+![image](https://github.com/GleisonR/Desafio/assets/116228613/33762fe3-b627-476f-8371-150120e9e5ce)
+
+
 
 
 
