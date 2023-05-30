@@ -248,7 +248,71 @@ Essas informações devem ser salvas num banco local em MYSQL, o mesmo utilizado
 
 ### 1. SOLUÇÃO:
 
-- Função para criar a conexão com o banco de dados
+- Função para criar a conexão com o banco de dados local
+  
+Uma função que cria e retorna uma conexão com um banco de dados MySQL usando os parâmetros fornecidos. Essa função vai ser chamada posteriormente para obter uma conexão ativa com o banco de dados e realizar operações de banco de dados, como consultas e atualizações.
+  
+- Conexão com API
+  
+Foi criado uma conexão que realiza uma solicitação HTTP GET para a URL de uma API usando os cabeçalhos e os parâmetros fornecidos. Em seguida, ele extrai o conteúdo da resposta em formato JSON e o armazena na variável data para uso posterior no código. Esse esse script foi realizado de acordo com a documentação da API.
+  
+- Lista para armazenar os dados das partidas
+
+Uma lista é criada para armazenar os dados coletados pela API, permitindo que essa variável seja referenciada posteriormente para acessar os dados obtidos.
+  
+- Definindo condição para somente partidas completas
+  
+Objetivo é cria uma nova lista chamada resultados_completados que contém apenas os elementos da lista data onde o valor da chave "completed" é verdadeiro. Isso filtra os dados da lista original e armazena apenas os resultados completados na nova lista.
+  
+- Explicação da logica
+  
+Um loop foi criado utilizado para iterar sobre cada partida na lista resultados_completados.
+
+**datahora_partida** está recebendo a informação de data e hora de início da partida, armazenada na chave 'commence_time'.
+
+**data_partida** está recebendo apenas a informação de data da partida, obtida a partir da chave 'commence_time'. A string é dividida usando o separador 'T' e a parte antes do separador é selecionada e fornecer apenas a data.
+
+**time_casa** está recebendo o nome do time da casa na partida, obtido da chave 'home_team'.
+
+**time_fora** está recebendo o nome do time visitante na partida, obtido da chave 'away_team'.
+
+**gols_time_casa** está recebendo a quantidade de gols marcados pelo time da casa. Ele acessa a lista 'scores' na posição 0 e, em seguida, a chave 'score', convertendo o valor para um inteiro.
+
+**gols_time_fora** está recebendo a quantidade de gols marcados pelo time visitante. Ele acessa a lista 'scores' na posição 1 e, em seguida, a chave 'score', convertendo o valor para um inteiro.
+
+Uma nova lista é criada chamada partidas. Para cada partida, uma lista com as informações de **datahora_partida, data_partida, time_casa, time_fora, gols_time_casa e gols_time_fora** é adicionada à lista partidas. Essa lista representa uma partida completa com todas as informações extraídas.
+
+- DataFrame com os dados das partidas
+  
+Foi criado um DataFrame chamado df. O df é construído a partir da lista partidas, onde cada item representa uma partida com informações como data e hora, times e gols marcados. As colunas do df são definidas como **'datahora_partida', 'data_partida', 'time_casa', 'time_fora', 'gols_time_casa' e 'gols_time_fora'**.
+  
+- Estabelecendo uma conexão com o banco de dados através de uma variável.
+
+Uma variável chamada 'connection' é criada para armazenar o resultado de create_connection(), dessa forma, posteriormente, a conexão com o banco de dados será estabelecida utilizando essa variável. Assim, se a conexão foi estabelecida com sucesso usando a estrutura 'if connection:'.
+  
+- Criação da tabela no banco de dados 
+
+Como o banco de dados local é MySQL foi criado um cursor a partir da conexão, que permite executar comandos SQL no banco de dados.
+
+Uma variável foi criada chamada create_table_query contendo o comando SQL para criar uma tabela chamada 'partidas_brasileirao_serie_a_2023' no banco de dados, caso ela ainda não exista. 
+  
+- Inserindo os dados do DataFrame na tabela
+ 
+
+Cria um loop for para iterar sobre as linhas do df. O método itertuples() é usado para gerar uma sequência de tuplas, onde cada tupla representa uma linha do df. Assim, é possível acessar os valores individuais de cada coluna da linha por meio da tupla. O parâmetro 'index=False' é utilizado para não incluir o índice das linhas na tupla resultante.
+
+Uma variável chamada 'insert_query' contendo os comandos SQL para inserir os valores de cada linha do df na tabela "partidas_brasileirao_serie_a_2023".
+  
+- Fechando conexões
+
+Nessa última etapa, as conexões com o DataFrame e com o banco de dados local são fechadas.
+  
+- Dados salvos no banco de dados MySQL
+
+![image](https://github.com/GleisonR/Desafio/assets/116228613/c2c9d6e1-7d21-49aa-8ae0-3cb103822e60)
+
+  
+ 
 
 
 
