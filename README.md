@@ -138,8 +138,35 @@ Analisando o valor retornado pelas duas consultas, verifica-se que o número de 
 
 ### 2° DESAFIO: MANIPULAÇÃO DE DADOS EM PYTHON
 
+Escreva um script em Python que lê os dados de uma tabela num banco MySQL, consolida os dados e salva numa outra tabela de um banco local MySQL. Para a tarefa de read, iremos passar o acesso a um banco de dados. Para o write, queremos que você suba um banco localmente para testar o script.
+
+Acesso ao banco de dados:
+
+- Banco: a4f2b49a_sample_database
+- Host:40b8f30251.nxcli.io
+- User: a4f2b49a_padawan
+- Password: KaratFlanksUgliedSpinal
+- Port: 3306
+
+Os dados estão presentes na tabela raw_data. Essa tabela contém as colunas:
+- datahora_acesso: o timestamp em que o jogador realizou a ação
+- modalidade: o tipo de jogo, podendo ser Cash Game ou Torneio
+- rake: o lucro gerado por esse jogador
+- clientes_id: id do jogador
+
+Queremos que você consolide os resultados por mês, sendo que a tabela consolidada terá as seguintes colunas:
+
+- mes: o mês em que os jogadores realizaram a ação
+- rake: a soma total do rake no mês
+- jogadores: a quantidade distinta de jogadores que jogaram cash game ou torneio
+- rake_cash_game: a soma do rake da modalidade cash game gerado no mês
+- rake_torneio: a soma do rake da modalidade torneio gerado no mês
+- jogadores_cash_game: a quantidade distinta de jogadores que jogaram cash game no mês
+- jogadores_torneio: a quantidade distinta de jogadores que jogaram torneio no mês
 
 
+O script fará a seguinte sequência:
+Ler os dados no banco MySQL -> Consolidar os dados -> Salvar os dados consolidados numa nova tabela. Utilize as bibliotecas que você se sentir mais confortável.
 
 
 
