@@ -227,6 +227,29 @@ A conexão com o banco de dados local é encerrada usando o método dispose() do
 
 ![image](https://github.com/GleisonR/Desafio/assets/116228613/33762fe3-b627-476f-8371-150120e9e5ce)
 
+<h>
+  
+
+### 3° DESAFIO: ACESSANDO APIs COM PYTHONA
+  
+Para essa atividade queremos que você utilize essa 'https://rapidapi.com/theoddsapi/api/live-sports-odds/' API. Nela você encontrará resultados de partidas de diversos esportes. Queremos que você utilize o endpoint de scores para buscar determinadas informações do sport soccer_brazil_campeonato na resposta da API e salvar numa tabela chamada partidas_brasileirao_serie_a_2023 contendo as seguintes colunas:
+
+- datahora_partida
+- data_partida
+- time_casa
+- time_fora
+- gols_time_casa
+- gols_time_fora
+
+**Obs: trazer apenas os resultados de jogos completos.**
+
+Essas informações devem ser salvas num banco local em MYSQL, o mesmo utilizado para as outras atividades.
+
+
+### 1. SOLUÇÃO:
+
+- Função para criar a conexão com o banco de dados
+
 
 
 
