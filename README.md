@@ -197,7 +197,7 @@ Nessa coluna eu observei que existe 2 tipos de data, um que me fala a dia, mes, 
 
 Os dados são consolidados e salvos na variavel 'consolidacao', os dados são agrupandos pela coluna mês e realizando operações de agregação usando o groupby.
 
-- Explicação da logica
+- Explicação da lógica
 
 **rake=('rake', lambda x: round(x.sum(), 2)):** Essa operação calcula a soma dos valores da coluna 'rake' para cada grupo e arredonda o resultado para 2 casas decimais. Assim, o resultado é armazenado na coluna 'rake' 
 
@@ -263,7 +263,7 @@ Uma lista é criada para armazenar os dados coletados pela API, permitindo que e
   
 Objetivo é cria uma nova lista chamada resultados_completados que contém apenas os elementos da lista data onde o valor da chave "completed" é verdadeiro. Isso filtra os dados da lista original e armazena apenas os resultados completados na nova lista.
   
-- Explicação da logica
+- Explicação da lógica
   
 Um loop foi criado utilizado para iterar sobre cada partida na lista resultados_completados.
 
