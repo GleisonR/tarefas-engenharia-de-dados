@@ -178,11 +178,11 @@ Agora, realizando as ações propostas pelo desafio, foi estabelecido a conexão
 
 - Salvando os dados
 
-O objetivo era trabalhar esses dados no pandas, então foi armazenado as variáveis referentes ao banco de dados e à consulta em um data frame. Em seguida, foi fechado a conexão, pois os dados necessários foram salvos data frame.
+O objetivo era trabalhar esses dados no pandas, então foi armazenado as variáveis referentes ao banco de dados e à consulta em um DataFrame. Em seguida, foi fechado a conexão, pois os dados necessários foram salvos DataFrame.
 
 - Converter a coluna datahora_acesso para o formato adequado
 
-Nessa coluna eu observei que existe 2 tipos de data, um que me fala a dia, mes, ano, hora, minutos e segundo e outro que me fala somente dia, mes e ano. Então importei a biblioteca "datetime" para fazer a formatação dessa coluna no meu dataframe.
+Nessa coluna foi verificado que existe 2 tipos de data, um que corresponde a dia, mes, ano, hora, minutos e segundos e outro que corresponde somente dia, mes e ano. Então foi importado a biblioteca "datetime" para fazer a formatação dessa coluna no df.
 
 - Criar a coluna 'mes'
 
