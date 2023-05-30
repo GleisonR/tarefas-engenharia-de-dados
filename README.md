@@ -227,8 +227,7 @@ A conexão com o banco de dados local é encerrada usando o método dispose() do
 
 ![image](https://github.com/GleisonR/Desafio/assets/116228613/33762fe3-b627-476f-8371-150120e9e5ce)
 
-<h>
-  
+<hr>
 
 ### 3° DESAFIO: ACESSANDO APIs COM PYTHONA
   
