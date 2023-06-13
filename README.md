@@ -224,7 +224,7 @@ A conexão com o banco de dados local é encerrada usando o método dispose() do
 
 <hr>
 
-### 3° DESAFIO: ACESSANDO APIs COM PYTHONA
+### 3° DESAFIO: ACESSANDO APIs COM PYTHON
   
 Para essa atividade queremos que você utilize essa 'https://rapidapi.com/theoddsapi/api/live-sports-odds/' API. Nela você encontrará resultados de partidas de diversos esportes. Queremos que você utilize o endpoint de scores para buscar determinadas informações do sport soccer_brazil_campeonato na resposta da API e salvar numa tabela chamada partidas_brasileirao_serie_a_2023 contendo as seguintes colunas:
 
